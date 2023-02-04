@@ -25,10 +25,12 @@ class Card:
         self.point_value = number if number <= 10 else 10
 
         # map the number to a card name
-        # for numbers <=10, the name and the number are the same
+        # for numbers >1 but <=10, the name and the number are the same
         # 11, 12, and 13 are mapped to JACK, QUEEN, and KING
         name = None
-        if number <= 10:
+        if number == 1:
+            name = "ACE"
+        elif number <= 10:
             name = str(number)
         elif number == 11:
             name = "JACK"
