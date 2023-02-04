@@ -36,8 +36,86 @@ For example, when delt a number card (2-10) with number, n, the stdout would rea
 
 # printing the menu after a card is dealt
 
-todo!()
+after the first card is dealt, print the menu. The menu looks like this:
 
+1. Get another card 
+2. Hold hand 
+3. Print statistics 
+4. Exit
 
+# what happens if the player picks an option from the menu
+
+## get another card
+
+If option one is chosen the player gets dealt another card.
+
+- If that card increases their total to 21, they win and print "BLACKJACK! You win!" to the stdout
+- If that card puts the player over 21, they lose and print "You exceeded 21! You lose."
+
+> in either case, a new game is started afterwards
+
+## Hold hand
+
+If this option is selected, it becomes the dealers turn.
+
+> #### dealer logic
+> 
+> To determine the dealers hand:
+> 
+> 1. generate a number between [16, 26] 
+> 2. this number is the dealers point value
+
+### determining a winner
+
+- if the dealers hand is above 21, the player wins
+- if the dealer and the player have equal point values, its a tie and print "It's a tie! No one wins!"
+- if neither of the above applies, whoever has the most points wins
+    - if the player wins print "You win!"
+    - if the dealer wins print "Dealer wins!"
+
+> after a winner or tie is annocuned, start a new game
+
+## print statistics 
+
+This will print game stats
+
+You should be tracking:
+
+1. number of games played
+2. number of player wins
+3. number of dealer wins
+4. number of ties
+
+This option should print all of that and the % of games won by the player with respect to all games played
+
+sample output:
+
+Number of Player wins: 2
+Number of Dealer wins: 2
+Number of tie games: 1
+Total # of games played is: 5
+Percentage of Player wins: 40.0%
+
+## Exit
+
+If this is selected exit the program
+
+# invalid menu input
+
+It is safe to assume that all input from the input funtion in this project will nicely parse to int.
+HOWEVER we do not know if that int is in [1, 4]. It could be 32423429 for all I know.
+
+if an int is input that != 1-4, then print this:
+
+Invalid input! 
+Please enter an integer value between 1 and 4. 
+
+then reprint the menu
+
+# Random numbers!
+
+they want me to use some random number that they made and its a class
+
+see the page on how to do that
 
 """
