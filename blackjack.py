@@ -61,6 +61,8 @@ def main():
     
     # number of ties
     ties = 0
+    # random number generator to be used throughout the program
+    rng = P1Random()
 
     while playing:
         # print the game number and menu
