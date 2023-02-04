@@ -46,6 +46,58 @@ class Card:
         self.name = name
 
 def main():
+    example_card = Card(1)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(2)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(3)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(4)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(5)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(6)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(7)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(8)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(9)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(10)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(11)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(12)
+    print(example_card.point_value)
+    print(example_card.name)
+
+    example_card = Card(13)
+    print(example_card.point_value)
+    print(example_card.name)
+
     pass
 
 if __name__ == "__main__":
