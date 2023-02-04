@@ -79,6 +79,7 @@ def main():
             pass
         elif user_input == 3:
             # print game stats
+            print_game_stats(player_wins, dealer_wins, ties, game_number)
             pass
         elif user_input == 4:
             playing = False
@@ -114,6 +115,18 @@ def print_menu():
     print("2. Hold hand") 
     print("3. Print statistics") 
     print("4. Exit")
+
+# print the stats of the game
+def print_game_stats(player_wins, dealer_wins, ties, game_number):
+    # compute % of player wins and round to one decimal place
+    player_wins_percent = round(player_wins / game_number, 1)
+
+    # print stats
+    print(f"Number of Player wins: {player_wins}")
+    print(f"Number of Dealer wins: {dealer_wins}")
+    print(f"Number of tie games: {ties}")
+    print(f"Total # of games played is: {game_number}")
+    print(f"Percentage of Player wins: {player_wins_percent}%")
 
 if __name__ == "__main__":
     main()
