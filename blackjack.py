@@ -197,6 +197,9 @@ def main():
             else:
                 error("unreachable!")
 
+        # only here for formatting
+        print("")
+
 # get input from the user and ensure that it is valid
 # this function will reject any input that is not "1", "2", "3", or "4"
 # it will loop forever or until it gets valid input
