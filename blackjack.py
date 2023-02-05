@@ -46,6 +46,38 @@ class Card:
         # an Excpetion is raised
         self.name = name
 
+# represents a player which has a hand 
+# which is an array of Cards
+#
+# has methods for:
+# adding to the hand
+# determining total number of points
+# and clearing the hand
+#
+# this class expects to be treated nicely!
+# do not pass it unchecked input!
+class Player:
+    def __init__(self):
+        self.hand = []
+
+    # takes the number and attempts to create a Card from that number
+    # then appends that Card to the players hand
+    # will throw an error if a Card cannot be created from the number
+    def add_to_hand(self, number):
+        card = Card(number)
+        self.hand.append(card)
+
+    # calculates how many points the player has in
+    # their hand
+    def points(self):
+        counter = 0
+        for card in self.hand:
+            counter += card.point_value
+
+    # clear the players hand
+    def clear_hand(self):
+        self.hand = []
+
 def main():
     # global values to track
     playing = True
@@ -61,8 +93,11 @@ def main():
     
     # number of ties
     ties = 0
+
     # random number generator to be used throughout the program
     rng = P1Random()
+    # the player
+    player = Player();
 
     while playing:
         # print the game number and menu
@@ -74,7 +109,6 @@ def main():
 
         # determine what to do based on the users input
         if user_input == 1:
-            # give the player another card
             pass
         elif user_input == 2:
             # dealers turn and decide winner
