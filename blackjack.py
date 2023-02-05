@@ -63,9 +63,19 @@ class Player:
     # takes the number and attempts to create a Card from that number
     # then appends that Card to the players hand
     # will throw an error if a Card cannot be created from the number
+    #
+    # every time a card is added to the players hand,
+    # we need to print the cards name and their total points
+    # this function also prints the new card's name and the players new total
     def add_to_hand(self, number):
+        # create card and add to hand
         card = Card(number)
         self.hand.append(card)
+
+        # print card name and player's points
+        print(f"Your card is a {card.name}!")
+        print(f"Your hand is: {self.points()}")
+        print("")
 
     # calculates how many points the player has in
     # their hand
@@ -73,17 +83,18 @@ class Player:
         counter = 0
         for card in self.hand:
             counter += card.point_value
+        return counter
 
     # clear the players hand
     def clear_hand(self):
         self.hand = []
 
 def main():
-    # global values to track
-    playing = True
+    # flag which indicates whether or not to terminate the program
+    done = False
 
     # number of games played
-    game_number = 1
+    game_number = 0
 
     # number of player wins
     player_wins = 0
@@ -96,31 +107,86 @@ def main():
 
     # random number generator to be used throughout the program
     rng = P1Random()
-    # the player
+
+    # create the player
     player = Player();
 
-    while playing:
-        # print the game number and menu
+    # every iteration of this loop represents an entire game
+    while not done:
+        # increment the game number
+        game_number += 1
+        # clear the players hand
+
+        player.clear_hand()
+
+        # flag which indicates whether or not the game is over
+        game_over = False
+
+        # print the game number
         print_game_number(game_number)
-        print_menu()
 
-        # ask the user which option they would like to select
-        user_input = get_checked_user_input("Choose an option: ")
+        # draw the player their first card
+        rand_int = rng.next_int(14) + 1
+        player.add_to_hand(rand_int)
 
-        # determine what to do based on the users input
-        if user_input == 1:
-            pass
-        elif user_input == 2:
+        # every iteration of this loop represents one turn in a game
+        while not game_over:
+            # print the menu
+            print_menu()
+
+            # ask the user which option they would like to select
+            user_input = get_checked_user_input("Choose an option: ")
+
+            # determine what to do based on the users input
+            if user_input == 1:
+                # give the player another card
+                rand_int = rng.next_int(13) + 1
+                player.add_to_hand(rand_int)
+                # check for blackjack
+                if player.points() == 21:
+                    print("BLACKJACK! You win!")
+                    player_wins += 1
+                    game_over = True
+                    
+                #check for bust
+                elif player.points() > 21:
+                    print("You exceeded 21! You lose.")
+                    dealer_wins += 1
+                    game_over = True
+
             # dealers turn and decide winner
-            pass
-        elif user_input == 3:
-            # print game stats
-            print_game_stats(player_wins, dealer_wins, ties, game_number)
-            pass
-        elif user_input == 4:
-            playing = False
-        else:
-            error("unreachable!")
+            elif user_input == 2:
+                # determine the dealers hand
+                dealer_points = rng.next_int(11) + 16
+
+                # is the dealer bust? then the player wins
+                if dealer_points > 21:
+                    print("You win!")
+                    player_wins += 1
+
+                # is it a tie?
+                elif dealer_points == player.points():
+                    print("It's a tie! No one wins!")
+                    ties += 1
+
+                # did the dealer win?
+                elif dealer_points > player.points():
+                    print("Dealer wins!")
+                    dealer_wins += 1
+
+                # if none of the above were true, we know the player won
+                else:
+                    print("You win!")
+                    player_wins += 1
+
+            elif user_input == 3:
+                # print game stats
+                print_game_stats(player_wins, dealer_wins, ties, game_number)
+            elif user_input == 4:
+                # exit the loop, kills the program
+                done = True
+            else:
+                error("unreachable!")
 
 # get input from the user and ensure that it is valid
 # this function will reject any input that is not "1", "2", "3", or "4"
@@ -144,6 +210,7 @@ def get_checked_user_input(msg):
 # print the game number
 def print_game_number(game_number):
     print(f"START GAME #{game_number}")
+    print("")
 
 # print the menu
 def print_menu():
