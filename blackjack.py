@@ -159,26 +159,34 @@ def main():
             elif user_input == 2:
                 # determine the dealers hand
                 dealer_points = rng.next_int(11) + 16
+                # print the dealers hand and the players hand
+                print(f"Dealer's hand: {dealer_points}")
+                print(f"Your hand is: {player.points()}")
+                print("")
 
                 # is the dealer bust? then the player wins
                 if dealer_points > 21:
                     print("You win!")
                     player_wins += 1
+                    game_over = True
 
                 # is it a tie?
                 elif dealer_points == player.points():
                     print("It's a tie! No one wins!")
                     ties += 1
+                    game_over = True
 
                 # did the dealer win?
                 elif dealer_points > player.points():
                     print("Dealer wins!")
                     dealer_wins += 1
+                    game_over = True
 
                 # if none of the above were true, we know the player won
                 else:
                     print("You win!")
                     player_wins += 1
+                    game_over = True
 
             elif user_input == 3:
                 # print game stats
