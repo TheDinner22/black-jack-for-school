@@ -238,14 +238,16 @@ def print_menu():
 
 # print the stats of the game
 def print_game_stats(player_wins, dealer_wins, ties, game_number):
+    games_played = game_number - 1
+
     # compute % of player wins and round to one decimal place
-    player_wins_percent = round((player_wins / game_number) * 100, 1)
+    player_wins_percent = round((player_wins / games_played) * 100, 1)
 
     # print stats
     print(f"Number of Player wins: {player_wins}")
     print(f"Number of Dealer wins: {dealer_wins}")
     print(f"Number of tie games: {ties}")
-    print(f"Total # of games played is: {game_number - 1}")
+    print(f"Total # of games played is: {games_played}")
     print(f"Percentage of Player wins: {player_wins_percent}%")
 
 if __name__ == "__main__":
