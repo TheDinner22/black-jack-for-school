@@ -136,6 +136,7 @@ def main():
 
             # ask the user which option they would like to select
             user_input = get_checked_user_input("Choose an option: ")
+            print("")
 
             # determine what to do based on the users input
             if user_input == 1:
@@ -218,6 +219,7 @@ def print_menu():
     print("2. Hold hand") 
     print("3. Print statistics") 
     print("4. Exit")
+    print("")
 
 # print the stats of the game
 def print_game_stats(player_wins, dealer_wins, ties, game_number):
