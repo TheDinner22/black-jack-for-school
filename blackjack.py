@@ -194,6 +194,8 @@ def main():
             elif user_input == 4:
                 # exit the loop, kills the program
                 done = True
+                game_over = True
+                continue
             else:
                 error("unreachable!")
 
