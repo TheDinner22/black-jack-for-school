@@ -231,6 +231,7 @@ def get_checked_user_input(msg):
             print("Invalid input!") 
             print("Please enter an integer value between 1 and 4.") 
             print("")
+            print_menu()
 
 # print the game number
 def print_game_number(game_number):
