@@ -3,8 +3,17 @@
 # black jack card game
 
 """
-questions
-1. does import really need to be first line
+main thing I would have changed was to make a Game class.
+
+I felt like I wrote the same "player wins" or "dealer wins"
+logic several times.
+
+plus
+
+The while loop over a while loop is confusing if you do not understand what
+each iteration represents.
+
+A Game class could have fixed both of these issues and it would have meant less global state.
 """
 
 from p1_random import P1Random
