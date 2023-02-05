@@ -126,7 +126,7 @@ def main():
         print_game_number(game_number)
 
         # draw the player their first card
-        rand_int = rng.next_int(14) + 1
+        rand_int = rng.next_int(13) + 1
         player.add_to_hand(rand_int)
 
         # every iteration of this loop represents one turn in a game
