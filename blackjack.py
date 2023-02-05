@@ -249,6 +249,7 @@ def print_game_stats(player_wins, dealer_wins, ties, game_number):
     print(f"Number of tie games: {ties}")
     print(f"Total # of games played is: {games_played}")
     print(f"Percentage of Player wins: {player_wins_percent}%")
+    print("")
 
 if __name__ == "__main__":
     main()
